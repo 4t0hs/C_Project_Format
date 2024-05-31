@@ -1,0 +1,6 @@
+.vscode/
+Build/
+build/
+CMakeFiles/
+CMakeCache.txt
+memo.md
