@@ -42,7 +42,7 @@ declare -a LONG_OPTIONS=(
 declare buildDirectory=""
 declare projectHome=""
 # build target name
-declare targetName=""
+declare targetName="all"
 # build type
 declare buildType=""
 declare doConfiguration=true
@@ -188,9 +188,7 @@ function CreateSettingsFile() {
 
 function Build() {
 	declare command="${CMAKE} --build ${buildDirectory}"
-	if [ "${targetName}" != "" ]; then
-		command+=" --target ${targetName}"
-	fi
+	command+=" --target ${targetName}"
 	if [ "${buildType}" != "" ]; then
 		command+=" --config ${buildType}"
 	fi
@@ -238,7 +236,6 @@ function GetLongOptions() {
 }
 
 function ParseOptions() {
-	# args=$(getopt -o cbghdt:v -l configure,build,generate,help,debug,type:,verbose -- "$@")
 	args=$(getopt -o "$(GetShortOptions)" -l "$(GetLongOptions)" -- "$@")
 	eval "set -- $args"
 
@@ -290,7 +287,7 @@ function ParseOptions() {
 }
 
 #-----------------------------------
-# entry point
+# command start point
 #-----------------------------------
 ParseOptions "$@"
 
