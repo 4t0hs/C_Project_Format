@@ -234,14 +234,11 @@ class Cmake:
 class ProjectBuilder:
     @dataclass
     class Controls:
-        # self
         doConfiguration: bool = True
         doBuild: bool = True
         doCleanup: bool = False
         createSetting: bool = False
         isDebug: bool = False
-
-    CMAKE: str = "cmake"
 
     def __init__(self) -> None:
         self.__system: Application = Application()
